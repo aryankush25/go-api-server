@@ -2,14 +2,16 @@ package services
 
 import (
 	"math/rand"
+	"strconv"
 	"time"
 )
 
 func GenerateOTP() string {
-    rand.Seed(time.Now().UnixNano())
+    src := rand.NewSource(time.Now().UnixNano())
+    r := rand.New(src)
     otp := ""
     for i := 0; i < 6; i++ {
-        otp += string(rand.Intn(10) + '0')
+        otp += strconv.Itoa(r.Intn(10))
     }
     return otp
 }
