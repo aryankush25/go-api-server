@@ -100,7 +100,7 @@ go-api-server/
 6. **Run the application**
 
    ```sh
-   go run main.go
+   go run .
    ```
 
 ### Usage
