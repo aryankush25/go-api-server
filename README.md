@@ -56,7 +56,7 @@ go-api-server/
 1. **Clone the repository**
 
    ```sh
-   git clone https://github.com/yourusername/go-api-server.git
+   git clone https://github.com/aryankush25/go-api-server.git
    cd go-api-server
    ```
 
