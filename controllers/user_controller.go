@@ -24,10 +24,21 @@ func SignupStep1(c *gin.Context) {
         return
     }
 
-    services.SendEmail(user.Email, "Your OTP", otp)
+    emailService, err := services.NewEmailService()
+    if err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to initialize email service"})
+        return
+    }
+
+    err = emailService.SendEmail(user.Email, "Your OTP", otp)
+    if err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to send OTP email"})
+        return
+    }
 
     c.JSON(http.StatusOK, gin.H{"message": "OTP sent to email"})
 }
+
 
 func SignupStep2(c *gin.Context) {
     var input struct {
